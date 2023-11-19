@@ -1,62 +1,81 @@
 import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import PropTypes from 'prop-types'
 import './App.css'
-function Categories({categories})
+import Header from './Header'
+
+function Filter()
 {
   return(
-  <>
-  {categories.map((category) =>{
-    return(
-    <h3 key={category.name} className="category">
-      {category.name}
-    </h3>)
-  })}
-  </>)
+    <div className='filterContent'>
+
+      <h2>Sort by:</h2>
+      <div className="filters">
+        <p className="filter">Under 10 euros</p>
+        <p className="filter">Under 5 euros</p>
+        <p className="filter">Discounted</p>
+        <p className="filter">ExampleSorter</p>
+        <p className="filter">ExampleSorter</p>
+        <p className="filter">ExampleSorter</p>
+      </div>
+
+      <h2>Filter by:</h2>
+      <div className="filters">
+        <p className="filter">ExampleFilter</p>
+        <p className="filter">ExampleFilter</p>
+        <p className="filter">ExampleFilter</p>
+      </div>
+
+    </div>
+  )
 }
-
-
-function Header()
+function Cards()
 {
-  const categories = [{ name:"Home"},{name:"MoreFoxes"},{name:"MoreFoxes"},{name:"MoreFoxes"},{name:"MoreFoxes"},{name:"MoreFoxes"},{name:"EvenMoreFoxes"},{name:"Filters"}]
   return(
-      <header>
+    <div className='cardContainer'>
 
-        <div className="topPart">
-          <h1>ReactStore</h1>
+      <div className="card">
 
-          <label htmlFor="">
-            <input type="search" name="SearchBar" id="search" placeholder='...' />
-          </label>
-          <div className="icons">
-            <img src="" alt="" className="icon" />
-          </div>
+        <img className='cardImg' src="" alt="" />
+        <p className="cardText"></p>
+        <div className="cardBtns">
+
+          <p className="price">20$</p>
+          <button className='buy'>
+            <img className='buyIcon' src="" alt="" />
+          </button>
 
         </div>
 
-        <nav className="categories">
-          <Categories categories={categories}/>
-        </nav>
-      </header>
+      </div>
+
+      <div className="card"></div>
+      <div className="card"></div>
+
+    </div>
+  )
+}
+function Products()
+{
+  return(
+    <div className='products'>
+    <Filter/>
+    <Cards/>
+    </div>
   )
 }
 
 function App() {
+ const [itemsInCart,setItemsInCart] = useState(0)
  const [money,setMoney] = useState(0)
  const [searchItem,setSearchItem] = useState("")
+ const [Filter,setFilter] = useState("")
   return (
     <>
-    <Header/>
-    {/* <Products/>
-    <Footer/> */}
+    <Header itemsInCart={itemsInCart}/>
+    <Products/>
+    {/* <Footer/> */}
     </>
   )
 }
 
-Categories.propTypes = {
-
-  categories: PropTypes.array
-  
-}
 export default App

@@ -4,6 +4,7 @@
 }
 header
 {
+  position: sticky;
   display: flex;
   height: 20vh;
   flex-direction: column;
@@ -18,7 +19,7 @@ header
 }
 h1
 {
-  padding-top: 5px;
+  padding-top: 20px;
   font-weight: 100;
   text-shadow: 0px 0px 4px white;
   display: flex;
@@ -49,17 +50,98 @@ input
 .categories
 {
   background-color: #222831;
-  display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .category
 {
-  margin: 15px;
+  
+  margin: 0px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   color: white;
   font-size: 1.5em;
   font-weight: 100;
   text-shadow: 0px 0px 1px white;
 }
-
+.category:hover
+{
+  background-color: #F96D00;
+}
+.icons
+{
+  flex-grow: 1;
+  display: flex;
+  justify-content: start;
+  gap: 2vw;
+  align-items: center;
+}
+.icon
+{
+  width: 50px;
+  height: 50px;
+}
+.groups
+{
+  background-color: #222831;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+}
+/* .filterContent
+{
+  display: flex;
+  position: absolute;
+  left: 70vw;
+  top: 300px;
+  width: max(20vw,10%);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.filters
+{
+  position: absolute;
+  transform: translate(0px, 80px);
+  width: 50%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 1px grey;
+}
+.filter
+{
+  padding: 10px;
+  padding-bottom: 10px;
+  margin: 0px;
+}
+.filter:hover
+{
+  background-color: #e4e4e4;
+}
+.filter:last-child
+{
+  border-radius: 0px 0px 5px 5px;
+}
+.filter:first-child
+{
+  border-radius: 5px 5px 0px 0px;
+} */
+.ItemsBought
+{
+  margin-left: -8px;
+  margin-top: -5px;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  font-weight: 1000;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart
+{
+  display: flex;
+}
