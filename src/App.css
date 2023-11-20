@@ -5,6 +5,8 @@
 header
 {
   position: sticky;
+  top: 0px;
+
   display: flex;
   height: 20vh;
   flex-direction: column;
@@ -51,7 +53,7 @@ input
 {
   background-color: #222831;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 .category
 {
@@ -90,43 +92,6 @@ input
   padding-right: 20px;
   justify-content: center;
 }
-/* .filterContent
-{
-  display: flex;
-  position: absolute;
-  left: 70vw;
-  top: 300px;
-  width: max(20vw,10%);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.filters
-{
-  position: absolute;
-  transform: translate(0px, 80px);
-  width: 50%;
-  border-radius: 5px;
-  box-shadow: 0px 0px 8px 1px grey;
-}
-.filter
-{
-  padding: 10px;
-  padding-bottom: 10px;
-  margin: 0px;
-}
-.filter:hover
-{
-  background-color: #e4e4e4;
-}
-.filter:last-child
-{
-  border-radius: 0px 0px 5px 5px;
-}
-.filter:first-child
-{
-  border-radius: 5px 5px 0px 0px;
-} */
 .ItemsBought
 {
   margin-left: -8px;
@@ -144,4 +109,86 @@ input
 .cart
 {
   display: flex;
+}
+.products
+{
+  padding: 50px;
+  display: flex;
+  gap: 3vw;
+  justify-content: center;
+  align-items: flex-start;
+}
+.filterContent
+{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+h2
+{
+  margin: 0px;
+}
+.cardContainer
+{
+  flex-grow: 10;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(5,435px);
+  gap: 10px;
+}
+.card
+{
+  display: flex;
+  box-shadow: 0px 0px 7px 1px #e7e7e7;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+.cardImg
+{
+  margin-top: 10px;
+  border-radius: 10px;
+  flex-grow: 1;
+  background-color: antiquewhite;
+  width: 90%;
+  max-height: 60%;
+}
+.cardText
+{
+  padding: 10px;
+  font-size: max(1vw,10px);
+  margin: 0px;
+  text-align: center;
+  min-height: 20%;
+}
+.cardBtns
+{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.price
+{
+  font-weight: bold;
+  margin: 0px;
+  font-size: max(1.5vw,10px);
+}
+.buy
+{
+  padding: 0px;
+  margin: 0px;
+  background-color: transparent;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buyIcon
+{
+  height: 30px;
+  width: 30px;
 }

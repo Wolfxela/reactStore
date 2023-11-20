@@ -1,65 +1,28 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import Header from './Header'
+import Filter from './Filter'
+import Card from './Card'
+import { func } from 'prop-types'
 
-function Filter()
+
+function Cards({ProductData})
 {
   return(
-    <div className='filterContent'>
 
-      <h2>Sort by:</h2>
-      <div className="filters">
-        <p className="filter">Under 10 euros</p>
-        <p className="filter">Under 5 euros</p>
-        <p className="filter">Discounted</p>
-        <p className="filter">ExampleSorter</p>
-        <p className="filter">ExampleSorter</p>
-        <p className="filter">ExampleSorter</p>
-      </div>
-
-      <h2>Filter by:</h2>
-      <div className="filters">
-        <p className="filter">ExampleFilter</p>
-        <p className="filter">ExampleFilter</p>
-        <p className="filter">ExampleFilter</p>
-      </div>
-
-    </div>
-  )
-}
-function Cards()
-{
-  return(
     <div className='cardContainer'>
-
-      <div className="card">
-
-        <img className='cardImg' src="" alt="" />
-        <p className="cardText"></p>
-        <div className="cardBtns">
-
-          <p className="price">20$</p>
-          <button className='buy'>
-            <img className='buyIcon' src="" alt="" />
-          </button>
-
-        </div>
-
-      </div>
-
-      <div className="card"></div>
-      <div className="card"></div>
-
+      {ProductData.WomenClothes.map((Product)=>{
+        return <Card key={Product.id} Product={Product}/>
+      })}
     </div>
   )
 }
-function Products()
+function Products({ProductData})
 {
   return(
     <div className='products'>
     <Filter/>
-    <Cards/>
+    <Cards ProductData={ProductData}/>
     </div>
   )
 }
@@ -69,13 +32,55 @@ function App() {
  const [money,setMoney] = useState(0)
  const [searchItem,setSearchItem] = useState("")
  const [Filter,setFilter] = useState("")
+ const [ProductData,setProductData] = useState({Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]})
+
+  
+  useEffect(()=>{
+
+    let fetchData = {Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]}
+
+    fetch('https://fakestoreapi.com/products')
+    .then(res=>res.json())
+    .then(data=>{
+      data.forEach(product => {
+        product.category === "electronics"? fetchData.Electronics.push(product):
+        product.category === "jewelery" ? fetchData.Jewelery.push(product):
+        product.category === "women's clothing" ? fetchData.WomenClothes.push(product):
+        product.category === "men's clothing" ? fetchData.MenClothes.push(product):
+        console.log("error")})
+        setProductData(fetchData)
+      })
+
+
+  },[])
+
+
+    
   return (
     <>
     <Header itemsInCart={itemsInCart}/>
-    <Products/>
+    <Products ProductData={ProductData} />
     {/* <Footer/> */}
     </>
   )
 }
 
 export default App
+
+// useEffect(()=>{
+
+//   let fetchData = {Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]}
+
+//   fetch('https://fakestoreapi.com/products?sort=desc')
+//   .then(res=>res.json())
+//   .then(data=>{
+//     fetchData = data
+//     fetchData.forEach(product => {
+//     product.category === "electronics"? setProductData({...ProductData, Electronics:ProductData.Electronics.push(product)}):
+//     product.category === "jewelery" ? setProductData({...ProductData, Jewelery:ProductData.Jewelery.push(product)}):
+//     product.category === "women's clothing" ? setProductData({...ProductData, WomenClothes:ProductData.WomenClothes.push(product)}):
+//     product.category === "men's clothing" ? setProductData({...ProductData, MenClothes:ProductData.MenClothes.push(product)}):
+//     console.log("error")})
+//   })
+
+// },[])

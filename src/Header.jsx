@@ -16,15 +16,14 @@ function Categories({categories})
 
 function Header({itemsInCart})
 {
-    console.log(itemsInCart)
-  const categories = [{ name:"Home"},{name:"Moreitems"},{name:"SoManyItems"},{name:"toomanyitems?"},{name:"More!"},{name:"items..."},{name:"EvenMoreitems"}]
+  const categories = [{ name:"Home"},{name:"Electronics"},{name:"Jewelery"},{name:"Men's Clothing"},{name:"Women's Clothing"}]
   return(
       <header>
 
         <div className="topPart">
           <h1>ReactStore</h1>
 
-          <label htmlFor="">
+          <label htmlFor="search">
             <input type="search" name="SearchBar" id="search" placeholder='Search' />
           </label>
           <div className="icons">
