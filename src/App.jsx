@@ -1,32 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import Header from './Header'
-import Filter from './Filter'
-import Card from './Card'
-import { func } from 'prop-types'
-
-
-function Cards({ProductData})
-{
-  return(
-
-    <div className='cardContainer'>
-      {ProductData.WomenClothes.map((Product)=>{
-        return <Card key={Product.id} Product={Product}/>
-      })}
-    </div>
-  )
-}
-function Products({ProductData})
-{
-  return(
-    <div className='products'>
-    <Filter/>
-    <Cards ProductData={ProductData}/>
-    </div>
-  )
-}
-
+import Products from './Products'
 function App() {
  const [itemsInCart,setItemsInCart] = useState(0)
  const [money,setMoney] = useState(0)
@@ -59,7 +34,7 @@ function App() {
   return (
     <>
     <Header itemsInCart={itemsInCart}/>
-    <Products ProductData={ProductData} />
+    <Products money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} ProductData={ProductData} />
     {/* <Footer/> */}
     </>
   )

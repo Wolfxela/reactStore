@@ -30,7 +30,7 @@ function Header({itemsInCart})
             <img src={person} alt="" className="icon" />
             <div className="cart">
                 <img src={cart} alt=""/>
-                <span className="ItemsBought">
+                <span data-test-id="test-span" className="ItemsBought">
                     {itemsInCart}
                 </span>
             </div>
