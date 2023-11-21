@@ -5,9 +5,9 @@ function Filter()
 
       <h2>Sort by:</h2>
       <div className="filters">
-        <p className="filter">Under 10 euros</p>
-        <p className="filter">Under 5 euros</p>
-        <p className="filter">Discounted</p>
+        <p className="filter">ExampleSorter</p>
+        <p className="filter">ExampleSorter</p>
+        <p className="filter">ExampleSorter</p>
         <p className="filter">ExampleSorter</p>
         <p className="filter">ExampleSorter</p>
         <p className="filter">ExampleSorter</p>

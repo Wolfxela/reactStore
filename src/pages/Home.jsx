@@ -1,6 +1,7 @@
 import Card from "../Card"
 import { useOutletContext } from "react-router-dom"
 import propTypes from 'prop-types'
+import Filter from "../Filter"
 function Home()
 {
 
@@ -10,7 +11,8 @@ function Home()
     product:[ProductData,setProductData],
     boughtProduct:[boughtProducts,setBoughtProducts]} = useOutletContext()
   return(
-
+    <>
+    <Filter/>
     <div className='cardContainer'>
       {ProductData.Electronics.map((Product)=>{
         return <Card boughtProducts={boughtProducts} setBoughtProducts={setBoughtProducts} money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} key={Product.id} Product={Product}/>
@@ -25,6 +27,7 @@ function Home()
         return <Card boughtProducts={boughtProducts} setBoughtProducts={setBoughtProducts} money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} key={Product.id} Product={Product}/>
       })}
     </div>
+    </>
   )
 }
 
