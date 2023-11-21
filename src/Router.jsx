@@ -25,7 +25,8 @@ const Router = () => {
                 path:'/Store',
                 element:<Products />,
                 children:[
-                    {index:true, element:<Cart/>},
+                    {index:true, element:<Home/>},
+                    {path:'/Store/Cart', element:<Cart/>},
                     {path:'/Store/Home', element:<Home/>},
                     {path:'/Store/Women',element:<WomensClothes/>},
                     {path:'/Store/Men',element:<MensClothes/>},

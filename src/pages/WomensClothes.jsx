@@ -6,12 +6,14 @@ function WomensClothes()
   const {
     items:[itemsInCart,setItemsInCart],
     moneyData:[money,setMoney],
-    product:[ProductData,setProductData]} = useOutletContext()
+    product:[ProductData,setProductData],
+    boughtProduct:[boughtProducts,setBoughtProducts]} = useOutletContext()
   return(
 
     <div className='cardContainer'>
       {ProductData.WomenClothes.map((Product)=>{
-        return <Card money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} key={Product.id} Product={Product}/>
+        return <Card boughtProducts={boughtProducts} setBoughtProducts={setBoughtProducts} money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} key={Product.id} Product={Product}/>
+        
       })}
     </div>
   )

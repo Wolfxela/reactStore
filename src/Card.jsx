@@ -1,6 +1,6 @@
 import cartBuy from './assets/cartBuy.png'
 import propTypes from 'prop-types'
-function Card({Product,setItemsInCart,setMoney,itemsInCart,money})
+function Card({Product,setItemsInCart,setMoney,itemsInCart,money,boughtProducts,setBoughtProducts})
 {
     return(
         <div className="card">
@@ -13,6 +13,10 @@ function Card({Product,setItemsInCart,setMoney,itemsInCart,money})
           <button type='button' onClick={()=>{
             setItemsInCart(itemsInCart+1)
             setMoney(money+Product.price)
+            setBoughtProducts([
+              ...boughtProducts,
+              Product
+            ])
           }} className='buy'>
             <img className='buyIcon' src={cartBuy} alt="" />
           </button>
@@ -23,10 +27,12 @@ function Card({Product,setItemsInCart,setMoney,itemsInCart,money})
     )
 }
 Card.propTypes = {
-  ProductData: propTypes.object,
+  Product: propTypes.object,
   setMoney: propTypes.func,
   setItemsInCart: propTypes.func,
   money: propTypes.number,
-  itemsInCart: propTypes.number
+  itemsInCart: propTypes.number,
+  boughtProducts: propTypes.array,
+  setBoughtProducts: propTypes.func
 }
 export default Card

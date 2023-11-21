@@ -9,7 +9,8 @@ function Products()
   const {
     items:[itemsInCart,setItemsInCart],
     moneyData:[money,setMoney],
-    product:[ProductData,setProductData]} = useOutletContext()
+    product:[ProductData,setProductData],
+    boughtProduct:[boughtProducts,setBoughtProducts]} = useOutletContext()
   return(
     <div className='products'>
     {/* <Filter/> */}
@@ -17,7 +18,8 @@ function Products()
     <Outlet context={{
             items:[itemsInCart,setItemsInCart],
             moneyData:[money,setMoney],
-            product:[ProductData,setProductData]
+            product:[ProductData,setProductData],
+            boughtProduct:[boughtProducts,setBoughtProducts],
         }}/>
     </div>
   )

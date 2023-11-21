@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 import './css/App.css'
 import Header from './Header'
-import Products from './Products'
 import { Outlet } from 'react-router-dom'
 function App() {
  const [itemsInCart,setItemsInCart] = useState(0)
  const [money,setMoney] = useState(0)
  const [ProductData,setProductData] = useState({Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]})
+ const [boughtProducts,setBoughtProducts] = useState([])
 
   
   useEffect(()=>{
@@ -35,7 +35,8 @@ function App() {
     <Outlet context={{
             items:[itemsInCart,setItemsInCart],
             moneyData:[money,setMoney],
-            product:[ProductData,setProductData]
+            product:[ProductData,setProductData],
+            boughtProduct:[boughtProducts,setBoughtProducts]
         }}/>
     {/* <Footer/> */}
     </>

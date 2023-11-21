@@ -2,12 +2,43 @@ import { useState } from "react"
 import { useOutletContext } from "react-router-dom"
 
 
+function CartCard({Product})
+{
+    return(
+
+        <div className="purchaseCard">
+
+        <img src={Product.image} alt="" className="purchasePicture" />
+        <div className="quantityContainer">
+            <h2>{Product.price + "$"}</h2>
+
+            <div className="quantityBody">
+                <h4 className="quantityText">Quantity:</h4>
+                <p className="quantity">1</p>
+            </div>
+
+        </div>
+
+    </div>
+        
+    )
+}
+
 function Cart()
 {
+    const ballActive = 
+    {
+        borderColor: "Black"
+    }
+    const buttonDisabled =
+    {
+        visibility: "hidden"
+    }
     const {
     items:[itemsInCart,setItemsInCart],
     moneyData:[money,setMoney],
-    product:[ProductData,setProductData]} = useOutletContext()
+    product:[ProductData,setProductData],
+    boughtProduct:[boughtProducts,setBoughtProducts]} = useOutletContext()
 
     const [selectedAll,setSelectedAll] = useState(false)
 
@@ -15,7 +46,9 @@ function Cart()
     {
         setMoney(0)
         setItemsInCart(0)
+        setBoughtProducts([])
     }
+
     return(
     <div className="cartBody">
 
@@ -28,15 +61,22 @@ function Cart()
                 <div className="selectOptions">
 
                     <div className="Selected">
-                        <div className="SelectedBall"></div>
+                        <div style={selectedAll === false ? ballActive: null} onClick={()=>{setSelectedAll(!selectedAll)}} className="SelectedBall"></div>
                         <p className="selectText">Select All items</p>
                     </div>
-                    <button onClick={resetData} className="deleteAll">Clear selected items</button>
+                    <button style={selectedAll === false ? buttonDisabled: null} onClick={resetData} className="deleteAll">Clear selected items</button>
 
                 </div>
 
             </div>
-            <div className="purchaseBottom"></div>
+            
+            <div className="purchaseBottom">
+
+                {boughtProducts.map((product)=>{
+                    return <CartCard key={product.id} Product = {product}/>
+                })}
+
+            </div>
 
         </div>
 
@@ -47,11 +87,11 @@ function Cart()
 
             <div className="priceBox">
                 <p className="priceText">Subtotal:</p>
-                <h3 className="total">10$</h3>
+                <h3 className="total">{Math.round(money)+"$"}</h3>
             </div>
             <div className="priceBox">
                 <p className="priceText">Shipping:</p>
-                <h3 className="total">Free:3</h3>
+                <h3 className="total">Free!</h3>
             </div>
             <div className="priceBox">
                 <p className="priceText">Saved:</p>
@@ -59,7 +99,7 @@ function Cart()
             </div>
             <div className="priceBox">
                 <p className="priceText totalPay">Total:</p>
-                <h3 className="total totalSum">10$</h3>
+                <h3 className="total totalSum">{Math.round(money) +"$"}</h3>
             </div>
 
         </div>

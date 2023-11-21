@@ -29,12 +29,12 @@ function Header({itemsInCart})
           </label>
           <div className="icons">
             <img src={person} alt="" className="icon" />
-            <div className="cart">
+            <Link to={'/Store/Cart'} className="cart">
                 <img src={cart} alt=""/>
                 <span data-test-id="test-span" className="ItemsBought">
                     {itemsInCart}
                 </span>
-            </div>
+            </Link>
           </div>
 
         </div>
