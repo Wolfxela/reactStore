@@ -1,7 +1,13 @@
-import Card from "./Card"
+import Card from "../Card"
+import { useOutletContext } from "react-router-dom"
 import propTypes from 'prop-types'
-function Home({ProductData,setMoney,setItemsInCart,money,itemsInCart})
+function Home()
 {
+
+  const {
+    items:[itemsInCart,setItemsInCart],
+    moneyData:[money,setMoney],
+    product:[ProductData,setProductData]} = useOutletContext()
   return(
 
     <div className='cardContainer'>

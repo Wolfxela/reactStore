@@ -1,19 +1,17 @@
 import { useCallback, useEffect, useState } from 'react'
-import './App.css'
+import './css/App.css'
 import Header from './Header'
 import Products from './Products'
+import { Outlet } from 'react-router-dom'
 function App() {
  const [itemsInCart,setItemsInCart] = useState(0)
  const [money,setMoney] = useState(0)
- const [searchItem,setSearchItem] = useState("")
- const [Filter,setFilter] = useState("")
  const [ProductData,setProductData] = useState({Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]})
 
   
   useEffect(()=>{
 
     let fetchData = {Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]}
-
     fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
     .then(data=>{
@@ -34,7 +32,11 @@ function App() {
   return (
     <>
     <Header itemsInCart={itemsInCart}/>
-    <Products money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} ProductData={ProductData} />
+    <Outlet context={{
+            items:[itemsInCart,setItemsInCart],
+            moneyData:[money,setMoney],
+            product:[ProductData,setProductData]
+        }}/>
     {/* <Footer/> */}
     </>
   )

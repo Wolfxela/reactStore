@@ -1,22 +1,27 @@
-import Card from "./Card"
+import { useOutletContext } from "react-router-dom"
+import Card from "../Card"
 import propTypes from 'prop-types'
-function Electronics({ProductData,setMoney,setItemsInCart,money,itemsInCart})
+function MensClothes()
 {
+  const {
+    items:[itemsInCart,setItemsInCart],
+    moneyData:[money,setMoney],
+    product:[ProductData,setProductData]} = useOutletContext()
   return(
 
     <div className='cardContainer'>
-      {ProductData.Electronics.map((Product)=>{
+      {ProductData.MenClothes.map((Product)=>{
         return <Card money={money} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney} key={Product.id} Product={Product}/>
       })}
     </div>
   )
 }
 
-Electronics.propTypes = {
+MensClothes.propTypes = {
     ProductData: propTypes.object,
     setMoney: propTypes.func,
     setItemsInCart: propTypes.func,
     money: propTypes.number,
     itemsInCart: propTypes.number
 }
-export default Electronics
+export default MensClothes

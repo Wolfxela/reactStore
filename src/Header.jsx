@@ -1,22 +1,23 @@
 import person from './assets/person.png'
 import cart from './assets/cart.png'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 function Categories({categories})
 {
   return(
   <div className='groups'>
   {categories.map((category) =>{
     return(
-    <h3 key={category.name} className="category">
+    <Link to={category.name} key={category.name} className="category">
       {category.name}
-    </h3>)
+    </Link>)
   })}
   </div>)
 }
 
 function Header({itemsInCart})
 {
-  const categories = [{ name:"Home"},{name:"Electronics"},{name:"Jewelery"},{name:"Men's Clothing"},{name:"Women's Clothing"}]
+  const categories = [{ name:"Home"},{name:"Electronics"},{name:"Jewelery"},{name:"Men"},{name:"Women"}]
   return(
       <header>
 

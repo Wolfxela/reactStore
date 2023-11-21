@@ -1,27 +1,39 @@
 import Filter from "./Filter"
+import { Outlet } from "react-router-dom"
 import propTypes from 'prop-types'
-import WomensClothes from "./WomensClothes"
-import MensClothes from "./MensClothes"
-import Electronics from "./Electronics"
-import Jewelery from "./Jewelery"
-import Home from "./Home"
+import { useOutletContext } from "react-router-dom"
 
-function Products({ProductData,setMoney,setItemsInCart,itemsInCart,money})
+
+function Products()
 {
+  const {
+    items:[itemsInCart,setItemsInCart],
+    moneyData:[money,setMoney],
+    product:[ProductData,setProductData]} = useOutletContext()
   return(
     <div className='products'>
-    <Filter/>
-    <MensClothes money = {money} itemsInCart ={itemsInCart} setItemsInCart={setItemsInCart} setMoney={setMoney}  ProductData={ProductData}/>
+    {/* <Filter/> */}
+
+    <Outlet context={{
+            items:[itemsInCart,setItemsInCart],
+            moneyData:[money,setMoney],
+            product:[ProductData,setProductData]
+        }}/>
     </div>
   )
 }
 
 Products.propTypes = {
     ProductData: propTypes.object,
+    setProductData: propTypes.func,
     setMoney: propTypes.func,
     setItemsInCart: propTypes.func,
     money: propTypes.number,
     itemsInCart: propTypes.number
+}
+
+Products.defaultProps = {
+  ProductData: {Electronics:[],Jewelery:[],MenClothes:[],WomenClothes:[]}
 }
 
 export default Products
